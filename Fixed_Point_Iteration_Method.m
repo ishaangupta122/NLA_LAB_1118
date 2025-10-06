@@ -1,39 +1,32 @@
-% Fixed Point Iteration Method
+% FIXED POINT ITERATION METHOD
 
 clear;
 clc;
 
-% f = input("Enter the function: ");
-f = @(x)  2*sin(pi*x) + x;
+syms x;
+f_sym = input('Enter f(x): ');
+g_sym = input('Enter g(x): ');
+x0 = input('Enter initial guess: ');
 
-for i = -10:1:10
-    if f(i) * f(i+1) < 0
-        break;
-    end
-end 
+f = matlabFunction(f_sym);
+g = matlabFunction(g_sym);
 
-a = i;
-b = i+1;
-c = input("Enter Initial Value: ");
-g = @(x) -2*sin(pi*x); 
-% g = input("Enter manipulated function: ");
+d_sym = diff(g_sym, x);
+d = matlabFunction(d_sym);
 
-syms x
-d = diff(g, x);
+if abs(d(x0)) >= 1
+    fprintf("Initial Guess will not converge.\n");
+    return;
+end
 
-for i = a:0.001:b
-    if g(i) < a && g(i) > b
-        break;
-    end
-    if abs (d(i)) > 1
-        break;
-    end
-end    
+tol = 0.0001;
 
 for i = 1:100
-    p = g(c);
-    if abs(c-p) < 0.0001
+    x1 = g(x0);
+    if abs(x1 - x0) < tol
+        fprintf('\nRoot: %.8f after %d iterations\n', x1, i);
         break;
     end
-    c = p;
-end    
+    x0 = x1;
+end
+

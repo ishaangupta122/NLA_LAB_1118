@@ -1,10 +1,10 @@
-% Lagrange Interpolation Method (Symbolic Version)
+% LAGRANGE INTERPOLATION METHOD
 
 clear;
 clc;
 
-x_val = input("Enter the x values: ");
-y_val = input("Enter the y values: ");
+x_val = input("Enter the x values in vectors: ");
+y_val = input("Enter the y values in vectors: ");
 n = length(x_val);
 
 syms x;
@@ -22,11 +22,8 @@ end
 
 L_poly = simplify(L_Poly);
 
-% Interpolation point
 p = input("Enter the value of x to interpolate: ");
 y = double(subs(L_poly, x, p));
 
-% Display results
-disp('Lagrange Polynomial: ');
-disp(L_poly);
+fprintf('Lagrange Polynomial: %s\n', char(L_poly));
 fprintf('Interpolated value at %.4f is %.4f\n', p, y);

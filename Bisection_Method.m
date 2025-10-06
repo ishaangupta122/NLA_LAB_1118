@@ -1,32 +1,32 @@
 % BISECTION METHOD
 
 clear;
-clc
+clc;
 
-f = @(x) x^3 + 2*x^2 - 3*x - 1;  % Define the function
-a = 1;                           % Interval start
-b = 2;                           % Interval end
-tol = 10^-2;                      % Tolerance
-count = 0;                       % Iteration counter
+f = input("Enter the function: ");
+a = input('Enter the lower bound a: ');
+b = input('Enter the upper bound b: ');
 
-while (abs(b - a)/2 >= tol)
-    error = (b - a)/2;
-    p = (a + b)/2;               % Midpoint
-    count = count + 1;
-    
-    fa = sign(f(a));
-    fb = sign(f(b));
-    fp = sign(f(p));
-    
-    if (fa * fp < 0)
-        b = p;
-    else
-        a = p;
-    end
-    
-    % Display iteration number and current midpoint (optional)
-    fprintf('Iteration %d: p = %.4f, error = %.4f\n', count, p, error);
+tol = 0.0001;
+
+if f(a) * f(b) > 0
+    fprintf('f(a) and f(b) must have opposite signs.');
 end
 
-fprintf('Approximate root: %.4f\n', p);
-fprintf('Total iterations: %d\n', count);
+fprintf('N\t A\t\t B\t\t C\t\t F(C)\n');
+for i = 1:100
+    c = (a + b)/2;       
+    fc = f(c);
+    fprintf('%d\t %.6f\t %.6f\t %.6f\t %.6f\n', i, a, b, c, fc);
+    
+    if abs(fc) < tol || (b - a)/2 < tol
+        fprintf('Root found: %.6f at iteration %d\n', c, i);
+        break;
+    end
+    
+    if f(a)*fc < 0
+        b = c;
+    else
+        a = c;
+    end
+end

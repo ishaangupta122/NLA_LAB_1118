@@ -3,20 +3,37 @@
 clear;
 clc;
 
-f = @(x) x^3 + 2*x^2 - 3*x - 1;   % Function
-g = @(x) 3*x^2 + 4*x - 3;         % Derivative of the function
+syms x
+f_sym = input('Enter the function: ');
+f = matlabFunction(f_sym);
 
-x0 = 1;                           % Initial guess
-err = 5;                          % Initial error (set large)
-tol = 10^(-4);                    % Tolerance for stopping criterion
-i = 1;                            % Iteration counter
-
-while err >= tol
-    x = x0 - (f(x0) / g(x0));     % Newton-Raphson update formula
-    err = abs(x - x0);            % Calculate current error
-    x0 = x;                       % Update guess
-    i = i + 1;                    % Increment iteration count
+for i = -10:1:10
+    if f(i) * f(i+1) < 0
+        break;
+    end
 end
 
-fprintf('Approximate root: %.6f\n', x);
-fprintf('Total iterations: %d\n',i);
+a = i;
+b = i + 1;
+tol = 0.0001;
+
+if abs(f(a)) < abs(f(b))
+    x0 = a;
+else
+    x0 = b;
+end
+
+g_sym = diff(f_sym, x);
+g = matlabFunction(g_sym);
+
+for i = 1:100
+    x1 = x0 - f(x0)/g(x0);
+    if abs(x0 - x1) < tol
+        break;
+    end
+    x0 = x1;
+end
+
+fprintf('Total iterations: %d\n', i);
+fprintf('Approximate root: %.6f\n', x1);
+fprintf('f(root) = %.6e\n', f(x1));
