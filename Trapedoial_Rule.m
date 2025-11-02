@@ -3,6 +3,8 @@
 clear;
 clc;
 
+fprintf('COMPOSITE/NON-COMPOSITE TRAPEZOIDAL RULE: \n\n');
+
 f = input('Enter the function: ');
 a = input('Enter lower limit a: ');
 b = input('Enter upper limit b: ');

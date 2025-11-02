@@ -3,6 +3,8 @@
 clear;
 clc;
 
+fprintf('LAGRANGE INTERPOLATION METHOD: \n\n');
+
 x_val = input("Enter the x values in vectors: ");
 y_val = input("Enter the y values in vectors: ");
 n = length(x_val);

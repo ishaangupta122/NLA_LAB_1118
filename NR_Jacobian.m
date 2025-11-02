@@ -3,6 +3,8 @@
 clear;
 clc;
 
+fprintf('NR METHOD FOR SYSTEM OF NON LINEAR EQUATIONS: \n\n');
+
 n_var = input("Enter No. of variables: ");
 n_eq = input("Enter No. of equations: ");
 var = sym("x", [1, n_var]);
@@ -24,8 +26,8 @@ J = jacobian(f, var);
 for i = 1:100
     f_eval = double(subs(f, var, num2cell(x)));
     J_eval = double(subs(J, var, num2cell(x)));
-    y = -J_eval \ f_eval';  
-    x = x + y';
+    y = -J_eval \ f_eval;  
+    x = x + y;
     
     if norm(y) < e || norm(f_eval) < e
         break;

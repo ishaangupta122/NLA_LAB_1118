@@ -3,6 +3,9 @@
 clear;
 clc;
 
+
+fprintf('SIMPSONS 1/3 RULE: \n\n');
+
 f = input('Enter the function: ');
 a = input('Enter lower limit a: ');
 b = input('Enter upper limit b: ');

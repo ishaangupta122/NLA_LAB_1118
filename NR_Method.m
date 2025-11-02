@@ -3,7 +3,10 @@
 clear;
 clc;
 
-syms x
+syms x;
+
+fprintf('NEWTON-RAPHSON METHOD: \n\n');
+
 f_sym = input('Enter the function: ');
 f = matlabFunction(f_sym);
 

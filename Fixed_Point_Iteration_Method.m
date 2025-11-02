@@ -4,6 +4,9 @@ clear;
 clc;
 
 syms x;
+
+fprintf('FIXED POINT ITERATION METHOD: \n\n');
+
 f_sym = input('Enter f(x): ');
 g_sym = input('Enter g(x): ');
 x0 = input('Enter initial guess: ');

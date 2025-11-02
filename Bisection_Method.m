@@ -3,6 +3,8 @@
 clear;
 clc;
 
+fprintf('BISECTION METHOD: \n\n');
+
 f = input("Enter the function: ");
 a = input('Enter the lower bound a: ');
 b = input('Enter the upper bound b: ');
