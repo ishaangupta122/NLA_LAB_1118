@@ -18,6 +18,6 @@ for k = 1:100
     end
 end
 
-fprintf('Dominant Eigenvalue: %f\n', lambda);
+fprintf('\nDominant Eigenvalue: %f\n', lambda);
 fprintf('Corresponding Eigenvector:\n');
 disp(X);

@@ -1,6 +1,0 @@
-% GAUSS ELIMINATION METHOD
-
-clear;
-clc;
-
-fprintf('GAUSS ELIMINATION METHOD: \n\n');

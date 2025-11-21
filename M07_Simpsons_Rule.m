@@ -3,7 +3,6 @@
 clear;
 clc;
 
-
 fprintf('SIMPSONS 1/3 RULE: \n\n');
 
 f = input('Enter the function: ');
